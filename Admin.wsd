@@ -1,0 +1,57 @@
+@startuml Administration
+actor User << Customer >> as c
+package Employee {
+    actor admin << Employee >> as a
+    actor driver << Employee >> as d
+}
+
+package Administration {
+    top to bottom direction
+
+    usecase UC5 as "
+
+    Truck Management
+
+---
+
+..Normal Scenario..
+    Drivers turn up to drive trucks along a predetermined route.
+    Admin manage servicing and ensure trucks are running properly.
+
+---
+
+..Error Scenario..
+
+    Driver missing or starts late causing delays further down the line. 
+    Truck breakdowns cause delays and potential customer loss
+    "
+
+    usecase UC6 as "
+    Customer Management
+
+---
+
+..Normal Scenarios..
+    Customer registers for waste managment service and gets added to route and allocated bins
+
+..Error Scenario..
+    Customer does not pay
+    "
+
+    usecase UC7 as "
+    Bin Management
+---
+..Normal Scenario..
+    Bins are allocated to customers and interact with drivers and customers to provide service
+    
+..Error Scenario..
+    Bin is damaged preventing use by customer and driver
+    "
+}
+
+a -> UC5
+a -> UC6
+c -> UC6
+d -> UC7
+c -> UC7
+@enduml
