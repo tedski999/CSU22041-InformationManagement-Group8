@@ -3,70 +3,72 @@
 left to right direction
 actor Consumer as c
 
-package Employee {
-	actor Driver as d
-	actor Admin as a
-}
+package Waste_Management_Centre {
+	package Employee {
+		actor Driver as d
+		actor Admin as a
+	}
 
-package Services {
-	usecase centre as "
-			Normal: 
-			Dispose of Waste at Recycling Centre
-			==
-			Error: 
-			Plant is Closed"
-	
-	usecase bins as "
-			Normal:
-			Put out Black/Brown/Green Bins
-			==
-			Error:
-			Wrong waste in bin"
-	
-	usecase skip as "
-			Normal:
-			Hire Skip
-			==
-			Error:
-			User damages skip"
-}
+	package Services {
+		usecase centre as "
+				Normal: 
+				Dispose of Waste at Recycling Centre
+				==
+				Error: 
+				Plant is Closed"
+		
+		usecase bins as "
+				Normal:
+				Put out Black/Brown/Green Bins
+				==
+				Error:
+				Wrong waste in bin"
+		
+		usecase skip as "
+				Normal:
+				Hire Skip
+				==
+				Error:
+				User damages skip"
+	}
 
-package Internal {
-    usecase transport as "
-            Normal:
-            Transport Waste for Disposal
-            Error:
-            Truck breaks down"
+	package Internal {
+		usecase transport as "
+				Normal:
+				Transport Waste for Disposal
+				Error:
+				Truck breaks down"
 
-    usecase dropoff as "
-            Normal:
-            Drop off waste
-            Error:
-            Drops off wrong waste"
-}
+		usecase dropoff as "
+				Normal:
+				Drop off waste
+				Error:
+				Drops off wrong waste"
+	}
 
-package Administration {
+	package Administration {
 
-    usecase truckmanage as "
-			Normal:
-   			Truck Management
-			==
-			Error:
-    		Driver missing or starts late"
+		usecase truckmanage as "
+				Normal:
+				Truck Management
+				==
+				Error:
+				Driver missing or starts late"
 
-    usecase customermanage as "
-			Normal:
-   			Customer Management
-			==
-			Error:
-    		Customer does not pay"
+		usecase customermanage as "
+				Normal:
+				Customer Management
+				==
+				Error:
+				Customer does not pay"
 
-    usecase binmanage as "
-			Normal:
-   			Bin Management
-			==
-			Error:
-    		Bin is damaged"
+		usecase binmanage as "
+				Normal:
+				Bin Management
+				==
+				Error:
+				Bin is damaged"
+	}
 }
 
 c --> centre
