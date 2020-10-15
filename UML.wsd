@@ -3,7 +3,7 @@
 left to right direction
 actor Consumer as c
 
-package Waste_Management_Centre {
+package "Waste Management Centre" {
 	package Employee {
 		actor Driver as d
 		actor Admin as a
@@ -11,63 +11,63 @@ package Waste_Management_Centre {
 
 	package Services {
 		usecase centre as "
-				Normal: 
-				Dispose of Waste at Recycling Centre
+				== Normal
+				<color:#228B22>Dispose of Waste at Recycling Centre
 				==
-				Error: 
-				Plant is Closed"
+				== Error
+				<color:#FF0000>Plant is Closed"
 		
 		usecase bins as "
-				Normal:
-				Put out Black/Brown/Green Bins
+				== Normal
+				<color:#228B22>Put out Black/Brown/Green Bins
 				==
-				Error:
-				Wrong waste in bin"
+				== Error
+				<color:#FF0000>Wrong waste in bin"
 		
 		usecase skip as "
-				Normal:
-				Hire Skip
+				== Normal
+				<color:#228B22>Hire Skip
 				==
-				Error:
-				User damages skip"
+				== Error
+				<color:#FF0000>User damages skip"
 	}
 
 	package Internal {
 		usecase transport as "
-				Normal:
-				Transport Waste for Disposal
-				Error:
-				Truck breaks down"
+				== Normal
+				<color:#228B22>Transport Waste for Disposal
+				== Error
+				<color:#FF0000>Truck breaks down"
 
 		usecase dropoff as "
-				Normal:
-				Drop off waste
-				Error:
-				Drops off wrong waste"
+				== Normal
+				<color:#228B22>Drop off waste
+				== Error
+				<color:#FF0000>Drops off wrong waste"
 	}
 
 	package Administration {
 
 		usecase truckmanage as "
-				Normal:
-				Truck Management
+				== Normal
+				<color:#228B22>Truck Management
 				==
-				Error:
-				Driver missing or starts late"
+				== Error
+				<color:#FF0000>Driver missing or starts late"
 
 		usecase customermanage as "
-				Normal:
-				Customer Management
+				== Normal
+				<color:#228B22>Customer Management
 				==
-				Error:
-				Customer does not pay"
+				== Error
+				<color:#FF0000>Customer does not pay"
 
 		usecase binmanage as "
-				Normal:
-				Bin Management
+				== Normal
+				<color:#228B22>Bin Management
 				==
-				Error:
-				Bin is damaged"
+				== Error
+				<color:#FF0000>Bin is damaged"
 	}
 }
 
