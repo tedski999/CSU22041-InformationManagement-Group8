@@ -1,22 +1,40 @@
-@startuml
+@startuml Waste Management Company
 
 left to right direction
-actor Guest as g
+actor Consumer as c
 
-package Professional {
-	actor Chef as c
-	actor "Food Critic" as fc
-}
-package Restaurant {
-	usecase "Eat Food" as UC1
-	usecase "Pay for Food" as UC2
-	usecase "Drink" as UC3
-	usecase "Review" as UC4
+package Employee {
+	actor Driver as d
+	actor Admin as a
 }
 
-fc --> UC4
-g --> UC1
-g --> UC2
-g --> UC3
+package Services {
+	usecase "Dispose of Waste at Recycling Centre" as UC1
+	usecase "Black/Brown/Green Bins" as UC2
+	usecase "Skip Hire" as UC3
+}
+
+package Internal {
+	usecase "Transport Waste between Centres" as UC4
+}
+
+package Administration {
+	usecase "Truck Scheduling" as UC5
+	usecase "Create Bin Numbers" as UC6
+	usecase "Manage waste inventory" as UC7
+}
+
+c --> UC1
+c --> UC2
+d --> UC2
+c --> UC3
+d --> UC3
+
+d--> UC4
+
+a --> UC5
+d --> UC5
+a --> UC6
+a --> UC7
 
 @enduml
