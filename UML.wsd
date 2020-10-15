@@ -9,32 +9,88 @@ package Employee {
 }
 
 package Services {
-	usecase "Dispose of Waste at Recycling Centre" as UC1
-	usecase "Black/Brown/Green Bins" as UC2
-	usecase "Skip Hire" as UC3
+	usecase centre as "
+			Normal: 
+			Dispose of Waste at Recycling Centre
+			==
+			Error: 
+			Plant is Closed"
+	
+	usecase bins as "
+			Normal:
+			Put out Black/Brown/Green Bins
+			==
+			Error:
+			Wrong waste in bin"
+	
+	usecase skip as "
+			Normal:
+			Hire Skip
+			==
+			Error:
+			User damages skip"
 }
 
 package Internal {
-	usecase "Transport Waste between Centres" as UC4
+    usecase transport as "
+            Normal:
+            Transport Waste for Disposal
+            Error:
+            Truck breaks down"
+
+    usecase dropoff as "
+            Normal:
+            Drop off waste
+            Error:
+            Drops off wrong waste"
 }
 
 package Administration {
-	usecase "Truck Scheduling" as UC5
-	usecase "Create Bin Numbers" as UC6
-	usecase "Manage waste inventory" as UC7
+
+    usecase truckmanage as "
+			Normal:
+   			Truck Management
+			==
+			Error:
+    		Driver missing or starts late"
+
+    usecase customermanage as "
+			Normal:
+   			Customer Management
+			==
+			Error:
+    		Customer does not pay"
+
+    usecase binmanage as "
+			Normal:
+   			Bin Management
+			==
+			Error:
+    		Bin is damaged"
 }
 
-c --> UC1
-c --> UC2
-d --> UC2
-c --> UC3
-d --> UC3
+c --> centre
+c --> bins
+c --> skip
 
-d--> UC4
+bins --> d
+skip --> d
 
-a --> UC5
-d --> UC5
-a --> UC6
-a --> UC7
+d --> transport
+d --> dropoff
+
+dropoff --> a
+
+a --> truckmanage
+a --> customermanage
+a --> binmanage
+
+customermanage -> c
+truckmanage -> d
+binmanage -> customermanage
+
+centre --> a
+skip --> a
+
 
 @enduml
