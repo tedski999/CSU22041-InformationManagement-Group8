@@ -67,7 +67,7 @@ package "Waste Management Centre" {
 				<color:#228B22>Keeping track of bin locations
 				==
 				== Error
-				<color:#FF0000>Bins is damaged"
+				<color:#FF0000>Bins are damaged"
 	}
 }
 
