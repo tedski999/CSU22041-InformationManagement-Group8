@@ -1,30 +1,142 @@
 @startuml
-Customer -- Bin
-Skip -- Class04
-Class05 -- Class06
-Class07 -- Class08
-Class09 -- Class10
 
-class Customer
+skinparam classAttributeIconSize 0
+
+abstract class Employee
 {
-    String name
-    void method()
+    +employeeName: String
+    +employeeID: int
+    +wage: int
+
+    +collectWage(): void
 }
 
-class WasteContainer
+class Admin {
+
+	-customers: CustomerAccount[]
+    -employees: Employee[]
+	-trucks: BinTruck[]
+	-bins: WasteContainer[]
+
+	-interactWithCustomers(): void
+    -billCustomer(int amount): void
+	-processPayroll(): void
+	-scheduleTrucks(): void
+	-takeInventoryOfBins(): void
+}
+
+class Driver
 {
-    int binNumber
-    String location
-    String[] wasteItems
+    +truck: BinTruck
+    +route: Route
+
+    -collectBin(): void
+    -collectSkip(): void
+    -transportWaste(): void
+    -disposeOfWaste(): void
+    +modifyRoute(Route route): void
+}
+
+class BinTruck
+{
+    +bins: Bin[]
+    +driver: Driver
+}
+
+class Waste
+{
+    +wasteType: String 
+    +weight: int
 }
 
 class Skip
 {
-    int maxItems
+    +size: int
+    +weight: int
+}
+
+abstract class WasteContainer
+{
+    +containerID: int
+    +waste: Waste[]
+    +capacity: int
+}
+
+abstract class WasteCentre
+{
+    +name: String
+    +waste: Waste[]
+}
+
+class Landfill
+{
+    +capacity: int
+    +wasteAmount: int
+
+    +processWaste(Waste[] waste): void
+}
+
+class Incinerator
+{
+    +fuel: int
+    +incinerationQueue: Waste[]
+
+    +burnWaste(Waste waste): void
+}
+
+class Customer
+{
+    +customerName: String
+    +customerAddress: String
+    +phoneNumber: int
+
+    -putOutBins():void
+    -loginToAccount():void
+
+}
+
+class CustomerAccount
+{
+    -userName: String
+    -userPassword: String
+
+    -makePayment():void
+    -checkBinSchedule():void
+    
 }
 
 class Bin
 {
-    int maxItems
+    +binType: String
+    +owner: Customer
 }
+
+class Route
+{
+    +startLocation: String
+    +endLocation: String
+    +stops: String[]
+}
+
+Employee<|-[#blue]-Driver
+Employee<|-[#blue]-Admin
+
+WasteContainer<|-[#blue]-Skip
+WasteContainer<|-[#blue]-Bin
+
+WasteCentre<|-[#blue]-Landfill
+WasteCentre<|-[#blue]-Incinerator
+
+Customer o-- CustomerAccount
+
+Driver "  owned - 1..n" -- "   driven by - 0" BinTruck: "drives"
+Admin "1..n" -- "0  " BinTruck: "manage"
+BinTruck o-- WasteCentre
+Driver "1..n" -- "0" WasteContainer: "collect"
+Customer o-- Bin
+Admin o-- CustomerAccount
+Admin -- Customer
+WasteContainer .[#blue]up. Waste
+Driver .[#blue]up. Route
+
 @enduml
