@@ -1,0 +1,17 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+
+Class Admin {
+	-customers: Customer[]
+	-employees: Employee[]
+	-trucks: Truck[]
+	-bins: Bin[]
+
+	-interactWithCustomers(): void
+	-processPayroll(): void
+	-scheduleTrucks(): void
+	-takeInventoryOfBins(): void
+}
+
+@enduml

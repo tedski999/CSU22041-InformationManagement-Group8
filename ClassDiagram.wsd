@@ -1,0 +1,30 @@
+@startuml
+Customer -- Bin
+Skip -- Class04
+Class05 -- Class06
+Class07 -- Class08
+Class09 -- Class10
+
+class Customer
+{
+    String name
+    void method()
+}
+
+class WasteContainer
+{
+    int binNumber
+    String location
+    String[] wasteItems
+}
+
+class Skip
+{
+    int maxItems
+}
+
+class Bin
+{
+    int maxItems
+}
+@enduml
