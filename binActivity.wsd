@@ -1,0 +1,24 @@
+@startuml
+
+(*) --> "Bin Request"
+note right: Can be requested by customer or when new customer is added
+
+if "Customer.customerActive()" then 
+    -->[true] If "Customer.hasBin(type)"
+        -->[true] "Charge Account"
+        --> "Bin.newBin(type)"
+    else
+        -->[false] "Customer.newBin(type)"
+    EndIf
+    --> ==s1==
+else 
+    -->[false] "Error"
+    --> "Remove bin from registry"
+    --> ==s1==
+endif
+
+
+--> "Update Bin Registry"
+note right: This allows trucks to see if bin is to be picked up
+--> (*)
+@enduml
