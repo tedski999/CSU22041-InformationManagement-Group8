@@ -50,21 +50,21 @@ package "Waste Management Centre" {
 
 		usecase truckmanage as "
 				== Normal
-				<color:#228B22>Scheduling Trucks
+				<color:#228B22>Schedule Trucks
 				==
 				== Error
 				<color:#FF0000>Driver missing or starts late"
 
 		usecase customermanage as "
 				== Normal
-				<color:#228B22>Following up on Customer Complaints
+				<color:#228B22>Follow up on Customer Complaints
 				==
 				== Error
 				<color:#FF0000>Customer does not want to pay"
 
 		usecase binmanage as "
 				== Normal
-				<color:#228B22>Keeping track of bin locations
+				<color:#228B22>Keep track of bin locations
 				==
 				== Error
 				<color:#FF0000>Bins are damaged"
