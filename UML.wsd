@@ -1,98 +1,61 @@
-@startuml Waste Management Company
+@startuml
 
+skinparam defaultTextAlignment center
 left to right direction
-actor Consumer as c
 
-package "Waste Management Centre" {
-	package Employee {
-		actor Driver as d
-		actor Admin as a
+actor Customer as "<b>Customer</b> \n Produces waste."
+
+package WasteManagementSystem as "Waste Management System" {
+	package WasteCollection as "Waste Collection Route" {
+		usecase Collect as "--<b>Collect Waste--\n Pick up skips and waste \n from bins. \n..<b>Error..\n Nothing to collect."
+		usecase DropOff as "--<b>Drop Off--\n Drop off collected waste \n at the waste centre. \n..<b>Error..\n The centre is closed."
 	}
 
 	package Services {
-		usecase centre as "
-				== Normal
-				<color:#228B22>Dispose of Waste at Recycling Centre
-				==
-				== Error
-				<color:#FF0000>Plant is Closed"
-		
-		usecase bins as "
-				== Normal
-				<color:#228B22>Put out Black/Brown/Green Bins
-				==
-				== Error
-				<color:#FF0000>Wrong waste in bin"
-		
-		usecase skip as "
-				== Normal
-				<color:#228B22>Hire Skip
-				==
-				== Error
-				<color:#FF0000>User damages skip"
+		usecase Bins as "--<b>Put Out Bins--\n Bins are collected weekly. \n..<b>Error..\n Bin is missing \ damaged."
+		usecase Skip as "--<b>Hire Skip--\n Skips are hired and \n must be collected. \n..<b>Error..\n Skip is missing \ damaged."
+		usecase Website as "--<b>Access Company Website--\n Enables interactions between the \n company and the customer \n..<b>Error..\n The website is down."
+		usecase WasteCentre as "--<b>Go To Waste Centre--\n Provides facillities to properly \n process waste. \n..<b>Error..\n Facilities are damaged."
 	}
 
-	package Internal {
-		usecase transport as "
-				== Normal
-				<color:#228B22>Transport Waste for Disposal
-				== Error
-				<color:#FF0000>Truck breaks down"
-
-		usecase dropoff as "
-				== Normal
-				<color:#228B22>Drop off waste
-				== Error
-				<color:#FF0000>Drops off wrong waste"
+	package Employees {
+		actor Admin as "<b>Admin</b> \n Manages the company."
+		actor Driver as "<b>Driver</b> \n Transports waste."
+		actor WasteCollector as "<b>Waste Collector</b> \n Accompanies driver and \n collects waste."
 	}
 
 	package Administration {
-
-		usecase truckmanage as "
-				== Normal
-				<color:#228B22>Schedule Trucks
-				==
-				== Error
-				<color:#FF0000>Driver missing or starts late"
-
-		usecase customermanage as "
-				== Normal
-				<color:#228B22>Follow up on Customer Complaints
-				==
-				== Error
-				<color:#FF0000>Customer does not want to pay"
-
-		usecase binmanage as "
-				== Normal
-				<color:#228B22>Keep track of bin locations
-				==
-				== Error
-				<color:#FF0000>Bins are damaged"
+		usecase ManageEmployees as "--<b>Manage Employees--\n Hire/Fire/Pay all employees. \n..<b>Error..\n No capital left."
+		usecase ManageAssets as "--<b>Manage Company Assets--\n Take stock of company bins, \n skips and trucks."
+		usecase Billing as "--<b>Bil Customer--\n Send and process payment \n for services. \n..<b>Error..\n Insufficant amount."
+		usecase SignUp as "--<b>Sign Up Customer--\n Add new customer details to a route. \n..<b>Error..\n Invalid customer details."
+		usecase ScheduleRoutes as "--<b>Schedule Routes--\n Plan out routes for the drivers. \n..<b>Error..\n No available drivers."
 	}
 }
 
-c --> centre
-c --> bins
-c --> skip
+' Employee relationships
+WasteCollector -l- Driver
 
-bins --> d
-skip --> d
+' Customer services
+Customer --> Bins
+Customer --> Skip
+Customer --> Website
+Customer --> WasteCentre
+Website --> SignUp
+Website --> Billing
 
-d --> transport
-d --> dropoff
+' Waste collection pipeline
+Bins --> Collect
+Skip --> Collect
+Collect <-- Driver
+Collect <-- WasteCollector
+Collect -> DropOff
+WasteCentre <-- DropOff
 
-dropoff --> a
-
-a --> truckmanage
-a --> customermanage
-a --> binmanage
-
-customermanage -> c
-truckmanage -> d
-binmanage -> customermanage
-
-centre --> a
-skip --> a
-
+' Administration work
+Administration <-- Admin
+ManageEmployees --> Employees
+ScheduleRoutes --> Driver
 
 @enduml
+
