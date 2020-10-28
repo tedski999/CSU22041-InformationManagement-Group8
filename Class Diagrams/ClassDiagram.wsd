@@ -8,7 +8,7 @@ abstract class Employee
     +employeeID: int
     +wage: int
 
-    +collectWage(): void
+    -collectWage(): void
 }
 
 class Admin {
@@ -76,12 +76,11 @@ class Customer
 
     -putOutBins():void
     -loginToAccount():void
-
 }
 
 class CustomerAccount
 {
-    -userName: String
+    +userName: String
     -userPassword: String
 
     -makePayment():void
@@ -114,7 +113,7 @@ Customer o-- CustomerAccount
 WasteCollector .[#blue]. Driver
 Driver -- BinTruck
 Admin -- BinTruck
-Driver -- WasteContainer
+Driver o-- WasteContainer
 Customer o-- Bin
 Admin o-- CustomerAccount
 Admin -- Customer

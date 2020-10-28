@@ -1,11 +1,12 @@
 @startuml
-(*) --> "Customer Leaves Bin Out on Collection Day"
+(*) --> "Bin with Reference No. left out on Collection Day"
 
-if "Waste Truck Authorizes Bin is paid for" then
-    -->[Payment Confirmed] "Waste Collected from Customer Bin"
+if "Waste Truck Authorizes Ref No. on Bin is paid for" then
+    -->[Payment Confirmed] "Waste Collected"
+    --> "Reference No. checked off route list"
     --> "Waste Truck continues on route"
 else
-    -->[Waste Collection Not Paid] "Waste Truck continues on route"
+    -->[Payment for Waste Collection not Paid] "Waste Truck continues on route"
 Endif
 --> "Waste Truck finished Bin Collection on Set Route"
 --> [Waste Truck Returns to Waste Plant for Disposal] (*)
