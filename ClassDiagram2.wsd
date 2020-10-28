@@ -1,0 +1,26 @@
+@startuml
+abstract class WasteCentre
+{
+    +name: String
+    +waste: Waste[]
+}
+
+class Landfill
+{
+    +capacity: int
+    +wasteAmount: int
+
+    +processWaste(Waste[] waste): void
+}
+
+class Incinerator
+{
+    +fuel: int
+    +incinerationQueue: Waste[]
+
+    +burnWaste(Waste waste): void
+}
+
+WasteCentre<|-[#blue]-Landfill
+WasteCentre<|-[#blue]-Incinerator
+@enduml

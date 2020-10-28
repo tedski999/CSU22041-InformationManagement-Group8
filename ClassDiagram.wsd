@@ -30,11 +30,17 @@ class Driver
     +truck: BinTruck
     +route: Route
 
-    -collectBin(): void
-    -collectSkip(): void
     -transportWaste(): void
     -disposeOfWaste(): void
     +modifyRoute(Route route): void
+}
+
+class WasteCollector
+{
+    +truck: BinTruck
+
+    -collectBin(): void
+    -collectSkip(): void
 }
 
 class BinTruck
@@ -60,28 +66,6 @@ abstract class WasteContainer
     +containerID: int
     +waste: Waste[]
     +capacity: int
-}
-
-abstract class WasteCentre
-{
-    +name: String
-    +waste: Waste[]
-}
-
-class Landfill
-{
-    +capacity: int
-    +wasteAmount: int
-
-    +processWaste(Waste[] waste): void
-}
-
-class Incinerator
-{
-    +fuel: int
-    +incinerationQueue: Waste[]
-
-    +burnWaste(Waste waste): void
 }
 
 class Customer
@@ -119,20 +103,18 @@ class Route
 }
 
 Employee<|-[#blue]-Driver
+Employee<|-[#blue]-WasteCollector
 Employee<|-[#blue]-Admin
 
 WasteContainer<|-[#blue]-Skip
 WasteContainer<|-[#blue]-Bin
 
-WasteCentre<|-[#blue]-Landfill
-WasteCentre<|-[#blue]-Incinerator
-
 Customer o-- CustomerAccount
 
-Driver "  owned - 1..n" -- "   driven by - 0" BinTruck: "drives"
-Admin "1..n" -- "0  " BinTruck: "manage"
-BinTruck o-- WasteCentre
-Driver "1..n" -- "0" WasteContainer: "collect"
+WasteCollector .[#blue]. Driver
+Driver -- BinTruck
+Admin -- BinTruck
+Driver -- WasteContainer
 Customer o-- Bin
 Admin o-- CustomerAccount
 Admin -- Customer
