@@ -13,16 +13,16 @@ abstract class Employee
 
 class Admin {
 
-	-customers: CustomerAccount[]
+    -customers: CustomerAccount[]
     -employees: Employee[]
-	-trucks: BinTruck[]
-	-bins: WasteContainer[]
+    -trucks: BinTruck[]
+    -bins: WasteContainer[]
 
-	-interactWithCustomers(): void
+    -interactWithCustomers(): void
     -billCustomer(int amount): void
-	-processPayroll(): void
-	-scheduleTrucks(): void
-	-takeInventoryOfBins(): void
+    -processPayroll(): void
+    -scheduleTrucks(): void
+    -takeInventoryOfBins(): void
 }
 
 class Driver
@@ -85,7 +85,7 @@ class CustomerAccount
 
     -makePayment():void
     -checkBinSchedule():void
-    
+
 }
 
 class Bin
@@ -119,5 +119,34 @@ Admin o-- CustomerAccount
 Admin -- Customer
 WasteContainer .[#blue]up. Waste
 Driver .[#blue]up. Route
+
+
+newpage
+
+
+abstract class WasteCentre
+{
+    +name: String
+    +waste: Waste[]
+}
+
+class Landfill
+{
+    +capacity: int
+    +wasteAmount: int
+
+    +processWaste(Waste[] waste): void
+}
+
+class Incinerator
+{
+    +fuel: int
+    +incinerationQueue: Waste[]
+
+    +burnWaste(Waste waste): void
+}
+
+WasteCentre<|-[#blue]-Landfill
+WasteCentre<|-[#blue]-Incinerator
 
 @enduml
