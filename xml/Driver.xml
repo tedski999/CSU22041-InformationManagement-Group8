@@ -1,0 +1,56 @@
+<?xml version="1.0" ?>
+<!--Created by Cian Jinks-->
+
+<!DOCTYPE Driver [
+
+<!ELEMENT Driver (truck?, route?)>
+<!ATTLIST Driver employeeID CDATA #IMPLIED>
+
+<!ELEMENT truck (BinTruck?)>
+<!ELEMENT BinTruck (Bin*, Driver?)>
+<!ELEMENT Bin (binType+, owner+)>
+
+<!ELEMENT binType (#PCDATA)>
+<!ELEMENT owner (#PCDATA)>
+
+<!ELEMENT route (Route+)>
+<!ELEMENT Route (startLocation?, stop+, endLocation?)>
+
+<!ELEMENT startLocation (#PCDATA)>
+<!ELEMENT stop (#PCDATA)>
+<!ELEMENT endLocation (#PCDATA)>
+
+]>
+
+<Driver employeeID="111300">
+	<Employee.employeeName>Paul James</Employee.employeeName> 
+	<Employee.wage>36000</Employee.wage>
+	<Driver.truck> 
+		<BinTruck>
+			<BinTruck.bin> 
+				<Bin>
+					<Bin.binType>Recycling</Bin.binType>
+					<Bin.owner>Customer X</Bin.owner>
+				</Bin>
+				<Bin>
+					<Bin.binType>Compost</Bin.binType>
+					<Bin.owner>Customer X</Bin.owner>
+				</Bin>
+				<Bin>
+					<Bin.binType>Recycling</Bin.binType>
+					<Bin.owner>Customer Z</Bin.owner>
+				</Bin>
+			</BinTruck.bin>
+			<BinTruck.Driver> 
+				<!--Not sure what to put here because its the Driver document itself-->
+			</BinTruck.Driver>
+		</BinTruck>
+	</Driver.truck>
+	<Driver.route> 
+		<Route>
+			<Route.startLocation>15 Brooke Lane, Dublin, Dublin</Route.startLocation>
+			<Route.endLocation>ADB Recycling Centre, Pebbletown, Meath</Route.endLocation>
+			<Route.stop>19 Stone Lane, Dublin, Dublin</Route.stop>
+		</Route>
+	</Driver.route>
+</Driver>
