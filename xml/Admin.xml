@@ -1,0 +1,323 @@
+<?xml version="1.0" ?>
+
+<!DOCTYPE Admin [
+	<!ELEMENT Employee (Employee.employeeName, Employee.wage)>
+		<!ATTLIST Employee employeeID CDATA #IMPLIED>
+		<!ELEMENT Employee.employeeName (#PCDATA)>
+		<!ELEMENT Employee.wage (#PCDATA)>
+
+	<!ELEMENT CustomerAccount (CustomerAccount.customer, CustomerAccount.userName, CustomerAccount.userPassword)>
+		<!ELEMENT CustomerAccount.customer (Customer)>
+		<!ELEMENT CustomerAccount.userName (#PCDATA)>
+		<!ELEMENT CustomerAccount.userPassword (#PCDATA)>
+
+	<!ELEMENT Customer (Customer.customerName, Customer.customerAddress, Customer.phoneNumber)>
+		<!ELEMENT Customer.customerName (#PCDATA)>
+		<!ELEMENT Customer.customerAddress (#PCDATA)>
+		<!ELEMENT Customer.phoneNumber (#PCDATA)>
+
+	<!ELEMENT BinTruck (BinTruck.driver, BinTruck.bins)>
+		<!ELEMENT BinTruck.driver (Driver)>
+		<!ELEMENT BinTruck.bins (WasteContainer*)>
+
+	<!ELEMENT Driver (Employee, Driver.route)>
+		<!ELEMENT Driver.route (Route)>
+
+	<!ELEMENT WasteContainer (WasteContainer.containerID, WasteContainer.capacity, WasteContainer.waste)>
+		<!ELEMENT WasteContainer.containerID (#PCDATA)>
+		<!ELEMENT WasteContainer.capacity (#PCDATA)>
+		<!ELEMENT WasteContainer.waste (Waste*)>
+
+	<!ELEMENT Route (Route.startLocation, Route.endLocation, Route.stops)>
+		<!ELEMENT Route.startLocation (#PCDATA)>
+		<!ELEMENT Route.endLocation (#PCDATA)>
+		<!ELEMENT Route.stops (Stop+)>
+
+	<!ELEMENT Stop (Stop.customer, Stop.bins)>
+		<!ELEMENT Stop.customer (CustomerAccount)>
+		<!ELEMENT Stop.bins (WasteContainer+)>
+
+	<!ELEMENT Admin (Employee, Admin.customers, Admin.employees, Admin.binTrucks, Admin.bins)>
+	<!ELEMENT Admin.customers (CustomerAccount*)>
+	<!ELEMENT Admin.employees (Employee*)>
+	<!ELEMENT Admin.binTrucks (BinTruck*)>
+	<!ELEMENT Admin.bins (WasteContainer*)>
+]>
+
+
+<Admin>
+
+	<Employee employeeID="212930">
+		<Employee.employeeName>Natasha Smith</Employee.employeeName>
+		<Employee.wage>49000</Employee.wage>
+	</Employee>
+
+	<Admin.customers>
+		<CustomerAccount>
+			<CustomerAccount.customer>
+				<Customer>
+					<Customer.customerName>Matt Yale</Customer.customerName>
+					<Customer.customerAddress>37 Park View, Hall Street, Corone, Dunane, N47 YS98</Customer.customerAddress>
+					<Customer.phoneNumber>+353 83 100 2776</Customer.phoneNumber>
+				</Customer>
+			</CustomerAccount.customer>
+			<CustomerAccount.userName>matt_yale</CustomerAccount.userName>
+			<CustomerAccount.userPassword>salsa74!</CustomerAccount.userPassword>
+		</CustomerAccount>
+		<CustomerAccount>
+			<CustomerAccount.customer>
+				<Customer>
+					<Customer.customerName>Mary Grellan</Customer.customerName>
+					<Customer.customerAddress>27 Youth Lane, Corone, Dunane, N47 GT12</Customer.customerAddress>
+					<Customer.phoneNumber>+353 87 920 0021</Customer.phoneNumber>
+				</Customer>
+			</CustomerAccount.customer>
+			<CustomerAccount.userName>mgrellan</CustomerAccount.userName>
+			<CustomerAccount.userPassword>mgrellan123</CustomerAccount.userPassword>
+		</CustomerAccount>
+		<CustomerAccount>
+			<CustomerAccount.customer>
+				<Customer>
+					<Customer.customerName>Hannah Morris</Customer.customerName>
+					<Customer.customerAddress>Dawntree House, Ale Road, Corone, Dunane, N47 XA81</Customer.customerAddress>
+					<Customer.phoneNumber>+353 87 122 6654</Customer.phoneNumber>
+				</Customer>
+			</CustomerAccount.customer>
+			<CustomerAccount.userName>han.morris</CustomerAccount.userName>
+			<CustomerAccount.userPassword>holly1994</CustomerAccount.userPassword>
+		</CustomerAccount>
+	</Admin.customers>
+
+	<Admin.employees>
+		<Employee employeeID="212930">
+			<Employee.employeeName>Natasha Smith</Employee.employeeName>
+			<Employee.wage>49000</Employee.wage>
+		</Employee>
+		<Employee employeeID="227100">
+			<Employee.employeeName>Harry Bell</Employee.employeeName>
+			<Employee.wage>27000</Employee.wage>
+		</Employee>
+		<Employee employeeID="312980">
+			<Employee.employeeName>Thomas Quinton</Employee.employeeName>
+			<Employee.wage>31000</Employee.wage>
+		</Employee>
+	</Admin.employees>
+
+	<Admin.binTrucks>
+		<BinTruck>
+			<BinTruck.driver>
+				<Driver>
+					<Employee employeeID="312980">
+						<Employee.employeeName>Thomas Quinton</Employee.employeeName>
+						<Employee.wage>31000</Employee.wage>
+					</Employee>
+					<Driver.route>
+						<Route>
+							<Route.startLocation>Bay 2, Corone Waste Plan, Corone Road, Corone, Dunanet</Route.startLocation>
+							<Route.endLocation>Zone 1, Corone Waste Plant, Corone Road, Corone, Dunane</Route.endLocation>
+							<Route.stops>
+								<Stop>
+									<Stop.customer>
+										<CustomerAccount>
+											<CustomerAccount.customer>
+												<Customer>
+													<Customer.customerName>Matt Yale</Customer.customerName>
+													<Customer.customerAddress>37 Park View, Hall Street, Corone, Dunane, N47 YS98</Customer.customerAddress>
+													<Customer.phoneNumber>+353 83 100 2776</Customer.phoneNumber>
+												</Customer>
+											</CustomerAccount.customer>
+											<CustomerAccount.userName>matt_yale</CustomerAccount.userName>
+											<CustomerAccount.userPassword>salsa74!</CustomerAccount.userPassword>
+										</CustomerAccount>
+									</Stop.customer>
+									<Stop.bins>
+										<WasteContainer>
+											<WasteContainer.containerID>278</WasteContainer.containerID>
+											<WasteContainer.capacity>12</WasteContainer.capacity>
+											<WasteContainer.waste>
+											</WasteContainer.waste>
+										</WasteContainer>
+										<WasteContainer>
+											<WasteContainer.containerID>172</WasteContainer.containerID>
+											<WasteContainer.capacity>12</WasteContainer.capacity>
+											<WasteContainer.waste>
+											</WasteContainer.waste>
+										</WasteContainer>
+									</Stop.bins>
+								</Stop>
+								<Stop>
+									<Stop.customer>
+										<CustomerAccount>
+											<CustomerAccount.customer>
+												<Customer>
+													<Customer.customerName>Mary Grellan</Customer.customerName>
+													<Customer.customerAddress>27 Youth Lane, Corone, Dunane, N47 GT12</Customer.customerAddress>
+													<Customer.phoneNumber>+353 87 920 0021</Customer.phoneNumber>
+												</Customer>
+											</CustomerAccount.customer>
+											<CustomerAccount.userName>mgrellan</CustomerAccount.userName>
+											<CustomerAccount.userPassword>mgrellan123</CustomerAccount.userPassword>
+										</CustomerAccount>
+									</Stop.customer>
+									<Stop.bins>
+										<WasteContainer>
+											<WasteContainer.containerID>243</WasteContainer.containerID>
+											<WasteContainer.capacity>12</WasteContainer.capacity>
+											<WasteContainer.waste>
+											</WasteContainer.waste>
+										</WasteContainer>
+									</Stop.bins>
+								</Stop>
+								<Stop>
+									<Stop.customer>
+										<CustomerAccount>
+											<CustomerAccount.customer>
+												<Customer>
+													<Customer.customerName>Hannah Morris</Customer.customerName>
+													<Customer.customerAddress>Dawntree House, Ale Road, Corone, Dunane, N47 XA81</Customer.customerAddress>
+													<Customer.phoneNumber>+353 87 122 6654</Customer.phoneNumber>
+												</Customer>
+											</CustomerAccount.customer>
+											<CustomerAccount.userName>han.morris</CustomerAccount.userName>
+											<CustomerAccount.userPassword>holly1994</CustomerAccount.userPassword>
+										</CustomerAccount>
+									</Stop.customer>
+									<Stop.bins>
+										<WasteContainer>
+											<WasteContainer.containerID>407</WasteContainer.containerID>
+											<WasteContainer.capacity>12</WasteContainer.capacity>
+											<WasteContainer.waste>
+											</WasteContainer.waste>
+										</WasteContainer>
+									</Stop.bins>
+								</Stop>
+							</Route.stops>
+						</Route>
+					</Driver.route>
+				</Driver>
+			</BinTruck.driver>
+			<BinTruck.bins>
+				<WasteContainer>
+					<WasteContainer.containerID>278</WasteContainer.containerID>
+					<WasteContainer.capacity>12</WasteContainer.capacity>
+					<WasteContainer.waste>
+					</WasteContainer.waste>
+				</WasteContainer>
+				<WasteContainer>
+					<WasteContainer.containerID>172</WasteContainer.containerID>
+					<WasteContainer.capacity>12</WasteContainer.capacity>
+					<WasteContainer.waste>
+					</WasteContainer.waste>
+				</WasteContainer>
+				<WasteContainer>
+					<WasteContainer.containerID>243</WasteContainer.containerID>
+					<WasteContainer.capacity>12</WasteContainer.capacity>
+					<WasteContainer.waste>
+					</WasteContainer.waste>
+				</WasteContainer>
+				<WasteContainer>
+					<WasteContainer.containerID>407</WasteContainer.containerID>
+					<WasteContainer.capacity>12</WasteContainer.capacity>
+					<WasteContainer.waste>
+					</WasteContainer.waste>
+				</WasteContainer>
+			</BinTruck.bins>
+		</BinTruck>
+		<BinTruck>
+			<BinTruck.driver>
+				<Driver>
+					<Employee employeeID="227100">
+						<Employee.employeeName>Harry Bell</Employee.employeeName>
+						<Employee.wage>27000</Employee.wage>
+					</Employee>
+					<Driver.route>
+						<Route>
+							<Route.startLocation>Bay 4, Corone Waste Plan, Corone Road, Corone, Dunanet</Route.startLocation>
+							<Route.endLocation>Zone 1, Corone Waste Plant, Corone Road, Corone, Dunane</Route.endLocation>
+							<Route.stops>
+								<Stop>
+									<Stop.customer>
+										<CustomerAccount>
+											<CustomerAccount.customer>
+												<Customer>
+													<Customer.customerName>Mary Grellan</Customer.customerName>
+													<Customer.customerAddress>27 Youth Lane, Corone, Dunane, N47 GT12</Customer.customerAddress>
+													<Customer.phoneNumber>+353 87 920 0021</Customer.phoneNumber>
+												</Customer>
+											</CustomerAccount.customer>
+											<CustomerAccount.userName>mgrellan</CustomerAccount.userName>
+											<CustomerAccount.userPassword>mgrellan123</CustomerAccount.userPassword>
+										</CustomerAccount>
+									</Stop.customer>
+									<Stop.bins>
+										<WasteContainer>
+											<WasteContainer.containerID>13</WasteContainer.containerID>
+											<WasteContainer.capacity>1950</WasteContainer.capacity>
+											<WasteContainer.waste>
+											</WasteContainer.waste>
+										</WasteContainer>
+									</Stop.bins>
+								</Stop>
+							</Route.stops>
+						</Route>
+					</Driver.route>
+				</Driver>
+			</BinTruck.driver>
+			<BinTruck.bins>
+				<WasteContainer>
+					<WasteContainer.containerID>13</WasteContainer.containerID>
+					<WasteContainer.capacity>1950</WasteContainer.capacity>
+					<WasteContainer.waste>
+					</WasteContainer.waste>
+				</WasteContainer>
+			</BinTruck.bins>
+		</BinTruck>
+	</Admin.binTrucks>
+
+	<Admin.bins>
+		<WasteContainer>
+			<WasteContainer.containerID>278</WasteContainer.containerID>
+			<WasteContainer.capacity>12</WasteContainer.capacity>
+			<WasteContainer.waste>
+			</WasteContainer.waste>
+		</WasteContainer>
+		<WasteContainer>
+			<WasteContainer.containerID>172</WasteContainer.containerID>
+			<WasteContainer.capacity>12</WasteContainer.capacity>
+			<WasteContainer.waste>
+			</WasteContainer.waste>
+		</WasteContainer>
+		<WasteContainer>
+			<WasteContainer.containerID>152</WasteContainer.containerID>
+			<WasteContainer.capacity>12</WasteContainer.capacity>
+			<WasteContainer.waste>
+			</WasteContainer.waste>
+		</WasteContainer>
+		<WasteContainer>
+			<WasteContainer.containerID>243</WasteContainer.containerID>
+			<WasteContainer.capacity>12</WasteContainer.capacity>
+			<WasteContainer.waste>
+			</WasteContainer.waste>
+		</WasteContainer>
+		<WasteContainer>
+			<WasteContainer.containerID>275</WasteContainer.containerID>
+			<WasteContainer.capacity>12</WasteContainer.capacity>
+			<WasteContainer.waste>
+			</WasteContainer.waste>
+		</WasteContainer>
+		<WasteContainer>
+			<WasteContainer.containerID>407</WasteContainer.containerID>
+			<WasteContainer.capacity>12</WasteContainer.capacity>
+			<WasteContainer.waste>
+			</WasteContainer.waste>
+		</WasteContainer>
+		<WasteContainer>
+			<WasteContainer.containerID>13</WasteContainer.containerID>
+			<WasteContainer.capacity>1950</WasteContainer.capacity>
+			<WasteContainer.waste>
+			</WasteContainer.waste>
+		</WasteContainer>
+	</Admin.bins>
+
+</Admin>
+
