@@ -3,47 +3,67 @@
 
 <!DOCTYPE Driver [
 
-<!ELEMENT Driver (truck?, route?)>
-<!ATTLIST Driver employeeID CDATA #IMPLIED>
+<!ELEMENT Employee (Employee.employeeName, Employee.wage)>
+	<!ATTLIST Employee employeeID CDATA #IMPLIED>
+	<!ELEMENT Employee.employeeName (#PCDATA)>
+	<!ELEMENT Employee.wage (#PCDATA)>
+		
+<!ELEMENT Route (Route.startLocation, Route.endLocation, Route.stop*)>
+	<!ELEMENT Route.startLocation (#PCDATA)>
+	<!ELEMENT Route.endLocation (#PCDATA)>
+	<!ELEMENT Route.stop (#PCDATA)>
 
-<!ELEMENT truck (BinTruck?)>
-<!ELEMENT BinTruck (Bin*, Driver?)>
-<!ELEMENT Bin (binType+, owner+)>
 
-<!ELEMENT binType (#PCDATA)>
-<!ELEMENT owner (#PCDATA)>
+<!ELEMENT BinTruck (BinTruck.bins)>
+	<!ELEMENT BinTruck.bins (Bin*)>
 
-<!ELEMENT route (Route+)>
-<!ELEMENT Route (startLocation?, stop+, endLocation?)>
-
-<!ELEMENT startLocation (#PCDATA)>
-<!ELEMENT stop (#PCDATA)>
-<!ELEMENT endLocation (#PCDATA)>
-
+<!ELEMENT WasteContainer (WasteContainer.containerID, WasteContainer.capacity)>
+	<!ELEMENT WasteContainer.containerID (#PCDATA)>
+	<!ELEMENT WasteContainer.capacity (#PCDATA)>
+	
+<!ELEMENT Bin (WasteContainer, Bin.binType, Bin.owner)>
+	<!ELEMENT Bin.binType (#PCDATA)>
+	<!ELEMENT Bin.owner (#PCDATA)>
+	
+<!ELEMENT Driver (Employee, Driver.truck?, Driver.route?)>
+	<!ELEMENT Driver.truck (BinTruck?)>
+	<!ELEMENT Driver.route (Route+)>
 ]>
 
-<Driver employeeID="111300">
-	<Employee.employeeName>Paul James</Employee.employeeName> 
-	<Employee.wage>36000</Employee.wage>
+<Driver>
+	<Employee employeeID="111300">
+		<Employee.employeeName>Paul James</Employee.employeeName> 
+		<Employee.wage>36000</Employee.wage>
+	</Employee>
+	
 	<Driver.truck> 
 		<BinTruck>
-			<BinTruck.bin> 
+			<BinTruck.bins> 
 				<Bin>
+					<WasteContainer>
+						<WasteContainer.containerID>278</WasteContainer.containerID>
+						<WasteContainer.capacity>12</WasteContainer.capacity>
+					</WasteContainer>
 					<Bin.binType>Recycling</Bin.binType>
 					<Bin.owner>Customer X</Bin.owner>
 				</Bin>
 				<Bin>
+					<WasteContainer>
+						<WasteContainer.containerID>123</WasteContainer.containerID>
+						<WasteContainer.capacity>32</WasteContainer.capacity>
+					</WasteContainer>
 					<Bin.binType>Compost</Bin.binType>
 					<Bin.owner>Customer X</Bin.owner>
 				</Bin>
 				<Bin>
+					<WasteContainer>
+						<WasteContainer.containerID>111</WasteContainer.containerID>
+						<WasteContainer.capacity>12</WasteContainer.capacity>
+					</WasteContainer>
 					<Bin.binType>Recycling</Bin.binType>
 					<Bin.owner>Customer Z</Bin.owner>
 				</Bin>
-			</BinTruck.bin>
-			<BinTruck.Driver> 
-				<!--Not sure what to put here because its the Driver document itself-->
-			</BinTruck.Driver>
+			</BinTruck.bins>
 		</BinTruck>
 	</Driver.truck>
 	<Driver.route> 
@@ -51,6 +71,10 @@
 			<Route.startLocation>15 Brooke Lane, Dublin, Dublin</Route.startLocation>
 			<Route.endLocation>ADB Recycling Centre, Pebbletown, Meath</Route.endLocation>
 			<Route.stop>19 Stone Lane, Dublin, Dublin</Route.stop>
+			<Route.stop>17 Monster Lane, Dublin, Dublin</Route.stop>
+			<Route.stop>15 Pickle Lane, Dublin, Dublin</Route.stop>
+			<Route.stop>13 Banana Lane, Dublin, Dublin</Route.stop>
+			<Route.stop>11 Stone Lane, Dublin, Dublin</Route.stop>
 		</Route>
 	</Driver.route>
 </Driver>
