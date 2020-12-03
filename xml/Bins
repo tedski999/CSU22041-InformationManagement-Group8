@@ -1,0 +1,58 @@
+<?xml version="1.0" ?>
+
+<!DOCTYPE Bin [
+	<!ELEMENT Waste (Waste.wasteType, Waste.weight)>
+		<!ELEMENT Waste.wasteType (#PCDATA)>
+		<!ELEMENT Waste.weight (#PCDATA)>
+
+	<!ELEMENT WasteContainer (WasteContainer.waste, WasteContainer.capacity)>
+		<!ATTLIST WasteContainer containerID CDATA #IMPLIED>
+		<!ELEMENT WasteContainer.waste (Waste*)>
+		<!ELEMENT WasteContainer.capacity (#PCDATA)>
+		
+	<!ELEMENT Customer (Customer.customerName, Customer.customerAddress, Customer.phoneNumber)>
+		<!ELEMENT Customer.customerName (#PCDATA)>
+		<!ELEMENT Customer.customerAddress (#PCDATA)>
+		<!ELEMENT Customer.phoneNumber (#PCDATA)>
+		
+	<!ELEMENT Bin (WasteContainer, Bin.binType, Bin.owner)>
+		<!ELEMENT Bin.binType (#PCDATA)>
+		<!ELEMENT Bin.owner (Customer)>	
+	
+
+]>
+
+
+<Bin>
+	<WasteContainer containerID = "234256">
+		<WasteContainer.waste>
+			<Waste>
+				<Waste.wasteType> Recycling </Waste.wasteType>
+				<Waste.weight> 20 </Waste.weight>
+			</Waste>
+			<Waste>
+				<Waste.wasteType> Compost </Waste.wasteType>
+				<Waste.weight> 35 </Waste.weight>
+			</Waste>
+			<Waste>
+				<Waste.wasteType> General </Waste.wasteType>
+				<Waste.weight> 25 </Waste.weight>
+			</Waste>
+		
+		</WasteContainer.waste>
+	
+		<WasteContainer.capacity> 40 </WasteContainer.capacity>
+	
+	</WasteContainer>
+
+	<Bin.binType> Green </Bin.binType>
+	<Bin.owner>
+		<Customer>
+			<Customer.customerName> Jack Watson </Customer.customerName>
+			<Customer.customerAddress> 45 Lakeside Road, Close Street, Longford, N39 A020 </Customer.customerAddress>
+			<Customer.phoneNumber> +353 85 243 6599 </Customer.phoneNumber>
+		</Customer>	
+	</Bin.owner>
+	
+</Bin>
+
