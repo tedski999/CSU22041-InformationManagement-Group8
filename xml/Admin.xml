@@ -28,14 +28,10 @@
 		<!ELEMENT WasteContainer.capacity (#PCDATA)>
 		<!ELEMENT WasteContainer.waste (Waste*)>
 
-	<!ELEMENT Route (Route.startLocation, Route.endLocation, Route.stops)>
+	<!ELEMENT Route (Route.startLocation, Route.endLocation, Route.stops+)>
 		<!ELEMENT Route.startLocation (#PCDATA)>
 		<!ELEMENT Route.endLocation (#PCDATA)>
-		<!ELEMENT Route.stops (Stop+)>
-
-	<!ELEMENT Stop (Stop.customer, Stop.bins)>
-		<!ELEMENT Stop.customer (CustomerAccount)>
-		<!ELEMENT Stop.bins (WasteContainer+)>
+		<!ELEMENT Route.stops (#PCDATA)>
 
 	<!ELEMENT Admin (Employee, Admin.customers, Admin.employees, Admin.binTrucks, Admin.bins)>
 	<!ELEMENT Admin.customers (CustomerAccount*)>
@@ -115,83 +111,10 @@
 						<Route>
 							<Route.startLocation>Bay 2, Corone Waste Plan, Corone Road, Corone, Dunanet</Route.startLocation>
 							<Route.endLocation>Zone 1, Corone Waste Plant, Corone Road, Corone, Dunane</Route.endLocation>
-							<Route.stops>
-								<Stop>
-									<Stop.customer>
-										<CustomerAccount>
-											<CustomerAccount.customer>
-												<Customer>
-													<Customer.customerName>Matt Yale</Customer.customerName>
-													<Customer.customerAddress>37 Park View, Hall Street, Corone, Dunane, N47 YS98</Customer.customerAddress>
-													<Customer.phoneNumber>+353 83 100 2776</Customer.phoneNumber>
-												</Customer>
-											</CustomerAccount.customer>
-											<CustomerAccount.userName>matt_yale</CustomerAccount.userName>
-											<CustomerAccount.userPassword>salsa74!</CustomerAccount.userPassword>
-										</CustomerAccount>
-									</Stop.customer>
-									<Stop.bins>
-										<WasteContainer>
-											<WasteContainer.containerID>278</WasteContainer.containerID>
-											<WasteContainer.capacity>12</WasteContainer.capacity>
-											<WasteContainer.waste>
-											</WasteContainer.waste>
-										</WasteContainer>
-										<WasteContainer>
-											<WasteContainer.containerID>172</WasteContainer.containerID>
-											<WasteContainer.capacity>12</WasteContainer.capacity>
-											<WasteContainer.waste>
-											</WasteContainer.waste>
-										</WasteContainer>
-									</Stop.bins>
-								</Stop>
-								<Stop>
-									<Stop.customer>
-										<CustomerAccount>
-											<CustomerAccount.customer>
-												<Customer>
-													<Customer.customerName>Mary Grellan</Customer.customerName>
-													<Customer.customerAddress>27 Youth Lane, Corone, Dunane, N47 GT12</Customer.customerAddress>
-													<Customer.phoneNumber>+353 87 920 0021</Customer.phoneNumber>
-												</Customer>
-											</CustomerAccount.customer>
-											<CustomerAccount.userName>mgrellan</CustomerAccount.userName>
-											<CustomerAccount.userPassword>mgrellan123</CustomerAccount.userPassword>
-										</CustomerAccount>
-									</Stop.customer>
-									<Stop.bins>
-										<WasteContainer>
-											<WasteContainer.containerID>243</WasteContainer.containerID>
-											<WasteContainer.capacity>12</WasteContainer.capacity>
-											<WasteContainer.waste>
-											</WasteContainer.waste>
-										</WasteContainer>
-									</Stop.bins>
-								</Stop>
-								<Stop>
-									<Stop.customer>
-										<CustomerAccount>
-											<CustomerAccount.customer>
-												<Customer>
-													<Customer.customerName>Hannah Morris</Customer.customerName>
-													<Customer.customerAddress>Dawntree House, Ale Road, Corone, Dunane, N47 XA81</Customer.customerAddress>
-													<Customer.phoneNumber>+353 87 122 6654</Customer.phoneNumber>
-												</Customer>
-											</CustomerAccount.customer>
-											<CustomerAccount.userName>han.morris</CustomerAccount.userName>
-											<CustomerAccount.userPassword>holly1994</CustomerAccount.userPassword>
-										</CustomerAccount>
-									</Stop.customer>
-									<Stop.bins>
-										<WasteContainer>
-											<WasteContainer.containerID>407</WasteContainer.containerID>
-											<WasteContainer.capacity>12</WasteContainer.capacity>
-											<WasteContainer.waste>
-											</WasteContainer.waste>
-										</WasteContainer>
-									</Stop.bins>
-								</Stop>
-							</Route.stops>
+							<Route.stops>37 Park View, Hall Street, Corone, Dunane, N47 YS98</Route.stops>
+							<Route.stops>37 Park View, Hall Street, Corone, Dunane, N47 YS98</Route.stops>
+							<Route.stops>27 Youth Lane, Corone, Dunane, N47 GT12</Route.stops>
+							<Route.stops>Dawntree House, Ale Road, Corone, Dunane, N47 XA81</Route.stops>
 						</Route>
 					</Driver.route>
 				</Driver>
@@ -234,31 +157,7 @@
 						<Route>
 							<Route.startLocation>Bay 4, Corone Waste Plan, Corone Road, Corone, Dunanet</Route.startLocation>
 							<Route.endLocation>Zone 1, Corone Waste Plant, Corone Road, Corone, Dunane</Route.endLocation>
-							<Route.stops>
-								<Stop>
-									<Stop.customer>
-										<CustomerAccount>
-											<CustomerAccount.customer>
-												<Customer>
-													<Customer.customerName>Mary Grellan</Customer.customerName>
-													<Customer.customerAddress>27 Youth Lane, Corone, Dunane, N47 GT12</Customer.customerAddress>
-													<Customer.phoneNumber>+353 87 920 0021</Customer.phoneNumber>
-												</Customer>
-											</CustomerAccount.customer>
-											<CustomerAccount.userName>mgrellan</CustomerAccount.userName>
-											<CustomerAccount.userPassword>mgrellan123</CustomerAccount.userPassword>
-										</CustomerAccount>
-									</Stop.customer>
-									<Stop.bins>
-										<WasteContainer>
-											<WasteContainer.containerID>13</WasteContainer.containerID>
-											<WasteContainer.capacity>1950</WasteContainer.capacity>
-											<WasteContainer.waste>
-											</WasteContainer.waste>
-										</WasteContainer>
-									</Stop.bins>
-								</Stop>
-							</Route.stops>
+							<Route.stops>27 Youth Lane, Corone, Dunane, N47 GT12</Route.stops>
 						</Route>
 					</Driver.route>
 				</Driver>
