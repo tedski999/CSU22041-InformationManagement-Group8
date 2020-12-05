@@ -10,7 +10,31 @@
 ]>
 
 <WasteCentre type="Landfill">
-	<WasteCentre.name></WasteCentre.name>
-	<WasteCentre.address></WasteCentre.address>
-	<WasteCentre.capacity></WasteCentre.capacity>
+	<WasteCentre.name>ADB Landfill</WasteCentre.name>
+	<WasteCentre.address>ADB Landfill, Pebbletown, Meath</WasteCentre.address>
+	<WasteCentre.capacity>100</WasteCentre.capacity>
+</WasteCentre>
+
+<WasteCentre type="Landfill">
+	<WasteCentre.name>BCC Landfill</WasteCentre.name>
+	<WasteCentre.address>BCC Landfill, Dun Moin, Meath</WasteCentre.address>
+	<WasteCentre.capacity>23</WasteCentre.capacity>
+</WasteCentre>
+
+<WasteCentre type="Incinerator">
+	<WasteCentre.name>Happy Incinerator</WasteCentre.name>
+	<WasteCentre.address>Happy Incinerator, Bananavill, Meath</WasteCentre.address>
+	<WasteCentre.capacity>110</WasteCentre.capacity>
+</WasteCentre>
+
+<WasteCentre type="Landfill">
+	<WasteCentre.name>Adam Landfill</WasteCentre.name>
+	<WasteCentre.address>Adam Landfill, Chartown, Down</WasteCentre.address>
+	<WasteCentre.capacity>50</WasteCentre.capacity>
+</WasteCentre>
+
+<WasteCentre type="Incinerator">
+	<WasteCentre.name>Lofty Incinerator</WasteCentre.name>
+	<WasteCentre.address>Lofty Incinerator, Orange County, Tipperary</WasteCentre.address>
+	<WasteCentre.capacity>75</WasteCentre.capacity>
 </WasteCentre>
