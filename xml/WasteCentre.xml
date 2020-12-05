@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!DOCTYPE WasteCentre [ 
+	
+<!ELEMENT WasteCentre (WasteCentre.name, WasteCentre.address, WasteCentre.capacity)>
+	<!ATTLIST WasteCentre type CDATA #IMPLIED>
+	<!ELEMENT WasteCentre.name (#PCDATA)>
+	<!ELEMENT WasteCentre.address (#PCDATA)>
+	<!ELEMENT WasteCentre.capacity (#PCDATA)>
+]>
+
+<WasteCentre type="Landfill">
+	<WasteCentre.name></WasteCentre.name>
+	<WasteCentre.address></WasteCentre.address>
+	<WasteCentre.capacity></WasteCentre.capacity>
+</WasteCentre>
