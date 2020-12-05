@@ -97,6 +97,10 @@
 			<Employee.employeeName>Thomas Quinton</Employee.employeeName>
 			<Employee.wage>31000</Employee.wage>
 		</Employee>
+		<Employee employeeID="111300">
+			<Employee.employeeName>Paul James</Employee.employeeName>
+			<Employee.wage>36000</Employee.wage>
+		</Employee>
 	</Admin.employees>
 
 	<Admin.binTrucks>
