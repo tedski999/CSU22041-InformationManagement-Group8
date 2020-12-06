@@ -1,24 +1,42 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<!DOCTYPE Skip_Info [ 
-<!ELEMENT Skip_Info (Skip)>
-<!ELEMENT Skip (Size, Weight, Active, User_Info)>
-<!ELEMENT Size (#PCDATA)>
-<!ELEMENT Weight (#PCDATA)>
-<!ELEMENT Active (#PCDATA)>
-<!ELEMENT User_Info (#PCDATA)><!-- Name, Contact_Number, Customer_ID  -->
-<!ATTLIST Skip skipID ID #REQUIRED>
+<?xml version="1.0" ?>
+
+<!DOCTYPE Skip [
+	<!ELEMENT Waste (Waste.weight)>
+		<!ELEMENT Waste.weight (#PCDATA)>
+
+	<!ELEMENT WasteContainer (WasteContainer.waste, WasteContainer.capacity)>
+		<!ATTLIST WasteContainer containerID CDATA #IMPLIED>
+		<!ELEMENT WasteContainer.waste (Waste*)>
+		<!ELEMENT WasteContainer.capacity (#PCDATA)>
+		
+	<!ELEMENT Customer (Customer.customerName, Customer.customerAddress, Customer.phoneNumber)>
+		<!ELEMENT Customer.customerName (#PCDATA)>
+		<!ELEMENT Customer.customerAddress (#PCDATA)>
+		<!ELEMENT Customer.phoneNumber (#PCDATA)>
+	
+	<!ELEMENT Skip (WasteContainer, Skip.size, Skip.owner)>
+		<!ELEMENT Skip.size (#PCDATA)>
+		<!ELEMENT Skip.owner (Customer)>
+
 ]>
 
-<Skip_Info>
-  <Skip skipID="ID001">
-    <Size>3x2x3m</Size>
-    <Weight>150kg</Weight>
-    <Active>True</Active>
-    <!-- <User_Info>
-      <Name>Example User</Name>
-      <Contact_Number>+353 1 896 1765</Contact_Number>
-      <Customer_ID>1</Customer_ID>
-    </User_Info> -->
-    <User_Info>User info here</User_Info>
-  </Skip>
-</Skip_Info>
+<Skip>
+  <WasteContainer containerID="125948">
+    <WasteContainer.waste>
+      <Waste>
+        <Waste.weight>150</Waste.weight>
+      </Waste>
+    </WasteContainer.waste>
+    <WasteContainer.capacity>200</WasteContainer.capacity>
+  </WasteContainer>
+
+
+  <Skip.size>M</Skip.size>
+  <Skip.owner>
+    <Customer>
+      <Customer.customerName> Adrian Murray </Customer.customerName>
+    <Customer.customerAddress> 5 The Fairways, Douglas, Cork, T12 PKN0 </Customer.customerAddress>
+    <Customer.phoneNumber> +353 021 438 2332 </Customer.phoneNumber>
+    </Customer>
+  </Skip.owner>
+</Skip>
