@@ -1,26 +1,3 @@
-<?xml version="1.0" ?>
-
-<!-- <!DOCTYPE Skip [
-  <!ATTLIST Skip skipID CDATA #IMPLIED>
-
-	<!ELEMENT Waste (Waste.weight)>
-		<!ELEMENT Waste.weight (#PCDATA)>
-
-	<!ELEMENT WasteContainer (WasteContainer.waste, WasteContainer.capacity)>
-		<!ATTLIST WasteContainer containerID CDATA #IMPLIED>
-		<!ELEMENT WasteContainer.waste (Waste*)>
-		<!ELEMENT WasteContainer.capacity (#PCDATA)>
-		
-	<!ELEMENT Customer (Customer.customerName, Customer.customerAddress, Customer.phoneNumber)>
-		<!ELEMENT Customer.customerName (#PCDATA)>
-		<!ELEMENT Customer.customerAddress (#PCDATA)>
-		<!ELEMENT Customer.phoneNumber (#PCDATA)>
-	
-	<!ELEMENT Skip (WasteContainer, Skip.size, Skip.owner)>
-		<!ELEMENT Skip.size (#PCDATA)>
-		<!ELEMENT Skip.owner (Customer)>
-
-]> -->
 
 <!DOCTYPE Skips [
   <!ELEMENT Skips (Skip)>
