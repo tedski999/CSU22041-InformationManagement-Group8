@@ -1,6 +1,8 @@
 <?xml version="1.0" ?>
 
-<!DOCTYPE Skip [
+<!-- <!DOCTYPE Skip [
+  <!ATTLIST Skip skipID CDATA #IMPLIED>
+
 	<!ELEMENT Waste (Waste.weight)>
 		<!ELEMENT Waste.weight (#PCDATA)>
 
@@ -18,25 +20,50 @@
 		<!ELEMENT Skip.size (#PCDATA)>
 		<!ELEMENT Skip.owner (Customer)>
 
+]> -->
+
+<!DOCTYPE Skips [
+  <!ELEMENT Skips (Skip)>
+
+  <!ATTLIST Skip skipID CDATA #IMPLIED>
+
+	<!ELEMENT Waste (Waste.weight)>
+		<!ELEMENT Waste.weight (#PCDATA)>
+
+	<!ELEMENT WasteContainer (WasteContainer.waste, WasteContainer.capacity)>
+		<!ATTLIST WasteContainer containerID CDATA #IMPLIED>
+		<!ELEMENT WasteContainer.waste (Waste*)>
+		<!ELEMENT WasteContainer.capacity (#PCDATA)>
+		
+	<!ELEMENT Customer (Customer.customerName, Customer.customerAddress, Customer.phoneNumber)>
+		<!ELEMENT Customer.customerName (#PCDATA)>
+		<!ELEMENT Customer.customerAddress (#PCDATA)>
+		<!ELEMENT Customer.phoneNumber (#PCDATA)>
+	
+	<!ELEMENT Skip (WasteContainer, Skip.size, Skip.owner)>
+		<!ELEMENT Skip.size (#PCDATA)>
+		<!ELEMENT Skip.owner (Customer)>
 ]>
 
-<Skip>
-  <WasteContainer containerID="125948">
-    <WasteContainer.waste>
-      <Waste>
-        <Waste.weight>150</Waste.weight>
-      </Waste>
-    </WasteContainer.waste>
-    <WasteContainer.capacity>200</WasteContainer.capacity>
-  </WasteContainer>
-
-
-  <Skip.size>M</Skip.size>
-  <Skip.owner>
-    <Customer>
-      <Customer.customerName> Adrian Murray </Customer.customerName>
-    <Customer.customerAddress> 5 The Fairways, Douglas, Cork, T12 PKN0 </Customer.customerAddress>
-    <Customer.phoneNumber> +353 021 438 2332 </Customer.phoneNumber>
-    </Customer>
-  </Skip.owner>
-</Skip>
+<Skips>
+  <Skip skipID="112233445" >
+    <WasteContainer containerID="125948">
+      <WasteContainer.waste>
+        <Waste>
+          <Waste.weight>150</Waste.weight>
+        </Waste>
+      </WasteContainer.waste>
+      <WasteContainer.capacity>200</WasteContainer.capacity>
+    </WasteContainer>
+  
+  
+    <Skip.size>M</Skip.size>
+    <Skip.owner>
+      <Customer>
+        <Customer.customerName> Adrian Murray </Customer.customerName>
+      <Customer.customerAddress> 5 The Fairways, Douglas, Cork, T12 PKN0 </Customer.customerAddress>
+      <Customer.phoneNumber> +353 021 438 2332 </Customer.phoneNumber>
+      </Customer>
+    </Skip.owner>
+  </Skip>
+</Skips>
