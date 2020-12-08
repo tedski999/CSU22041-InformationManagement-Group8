@@ -69,12 +69,12 @@
 	<Driver.route> 
 		<Route>
 			<Route.startLocation>15 Brooke Lane, Dublin, Dublin</Route.startLocation>
-			<Route.endLocation>ADB Recycling Centre, Pebbletown, Meath</Route.endLocation>
 			<Route.stop>19 Stone Lane, Dublin, Dublin</Route.stop>
 			<Route.stop>17 Monster Lane, Dublin, Dublin</Route.stop>
 			<Route.stop>15 Pickle Lane, Dublin, Dublin</Route.stop>
 			<Route.stop>13 Banana Lane, Dublin, Dublin</Route.stop>
 			<Route.stop>11 Stone Lane, Dublin, Dublin</Route.stop>
+			<Route.endLocation>ADB Recycling Centre, Pebbletown, Meath</Route.endLocation>
 		</Route>
 	</Driver.route>
 </Driver>

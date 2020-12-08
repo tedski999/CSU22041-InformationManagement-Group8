@@ -1,5 +1,5 @@
 declare function local:check_used_bins(){
-  let $wasteContainer := doc("Bins")/Bin/WasteContainer/WasteContainer.waste
+  let $wasteContainer := doc("Bins.xml")/Bin/WasteContainer/WasteContainer.waste
   
   return 
   <check_empty_waste>

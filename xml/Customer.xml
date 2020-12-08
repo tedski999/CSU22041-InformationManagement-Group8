@@ -56,9 +56,9 @@
       <Customer.bin>
           <Bin>
             <WasteContainer>
-					      <WasteContainer.containerID>154</WasteContainer.containerID>
-						    <WasteContainer.capacity>10</WasteContainer.capacity>
-					  </WasteContainer>
+				<WasteContainer.containerID>154</WasteContainer.containerID>
+				<WasteContainer.capacity>10</WasteContainer.capacity>
+		    </WasteContainer>
             <Bin.binType>Recycling</Bin.binType>
             <Bin.owner>Scotty Snow</Bin.owner>
           </Bin>

@@ -9,7 +9,7 @@
 	<!ELEMENT WasteCentre.capacity (#PCDATA)>
 ]>
 
-<WasteCantres>
+<WasteCentres>
 
 	<WasteCentre type="Landfill">
 		<WasteCentre.name>ADB Landfill</WasteCentre.name>
@@ -41,4 +41,4 @@
 		<WasteCentre.capacity>75</WasteCentre.capacity>
 	</WasteCentre>
 
-</WasteCantres>
+</WasteCentres>
