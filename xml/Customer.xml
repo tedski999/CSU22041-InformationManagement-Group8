@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE Customer [
+  <!ELEMENT Customer (Customer.name, Customer.address, Phone.number, Customer.account,Customer.bin, Customer.admin)>
+      <!ELEMENT Customer.name (#PCDATA)>
+      <!ELEMENT Customer.address (#PCDATA)>
+      <!ELEMENT Phone.number (#PCDATA)>
+
+  <!ELEMENT CustomerAccount (CustomerAccount.customer, CustomerAccount.userName, CustomerAccount.userPassword)>
+      <!ELEMENT CustomerAccount.customer (Customer)>
+      <!ELEMENT CustomerAccount.userName (#PCDATA)>
+      <!ELEMENT CustomerAccount.userPassword (#PCDATA)>
+
+  <!ELEMENT Bin (WasteContainer, Bin.binType, Bin.owner)>
+      <!ELEMENT Bin.binType (#PCDATA)>
+      <!ELEMENT Bin.owner (Customer)>
+  
+  <!ELEMENT BinTruck (BinTruck.bin)>
+	    <!ELEMENT BinTruck.bin (Bin*)>
+
+  <!ELEMENT WasteContainer (WasteContainer.containerID, WasteContainer.capacity)>
+  	  <!ELEMENT WasteContainer.containerID (#PCDATA)>
+	    <!ELEMENT WasteContainer.capacity (#PCDATA)>
+  
+  <!ELEMENT Admin (Employee, Admin.customers, Admin.employees, Admin.binTrucks, Admin.bins)>
+      <!ELEMENT Admin.customers (CustomerAccount*)>
+      <!ELEMENT Admin.employees (Employee*)>
+      <!ELEMENT Admin.binTrucks (BinTruck*)>
+      <!ELEMENT Admin.bins (WasteContainer*)>
+
+  <!ELEMENT Employee (Employee.employeeName, Employee.wage)>
+	    <!ATTLIST Employee employeeID CDATA #IMPLIED>
+	    <!ELEMENT Employee.employeeName (#PCDATA)>
+	    <!ELEMENT Employee.wage (#PCDATA)>
+
+]>
+
+<Customer>
+      <Customer.name>Scotty Snow</Customer.name>
+      <Customer.address>4 Wellington Road</Customer.address>
+      <Phone.number>0873478129</Phone.number>
+    
+      <Customer.account>
+          <CustomerAccount>
+            <CustomerAccount.customer>
+              <Customer>
+                  <Customer.name>Scotty Snow</Customer.name>
+                  <Customer.address>4 Wellington Road</Customer.address>
+                  <Phone.number>0873478129</Phone.number>
+                </Customer>
+            </CustomerAccount.customer>
+          <CustomerAccount.userName>snowyscott</CustomerAccount.userName>
+          <CustomerAccount.userPassword>passwordsecure</CustomerAccount.userPassword>
+          </CustomerAccount>
+      </Customer.account>
+
+      <Customer.bin>
+          <Bin>
+            <WasteContainer>
+					      <WasteContainer.containerID>154</WasteContainer.containerID>
+						    <WasteContainer.capacity>10</WasteContainer.capacity>
+					  </WasteContainer>
+            <Bin.binType>Recycling</Bin.binType>
+            <Bin.owner>Scotty Snow</Bin.owner>
+          </Bin>
+      </Customer.bin>
+
+      <Customer.admin>
+          <Admin>
+            <Admin.customers>
+               <CustomerAccount>
+                  <CustomerAccount.customer>
+                    <Customer>
+                      <Customer.name>Scotty Snow</Customer.name>
+                      <Customer.address>4 Wellington Road</Customer.address>
+                      <Phone.number>0873478129</Phone.number>
+                    </Customer>
+                  </CustomerAccount.customer>
+                </CustomerAccount>  
+            </Admin.customers>
+            
+            <Admin.employees>
+              <Employee employeeID="175020">
+		            <Employee.employeeName>James Smith</Employee.employeeName> 
+		            <Employee.wage>40000</Employee.wage>
+	            </Employee>
+            </Admin.employees>
+            
+            <Admin.binTrucks>
+              <BinTruck>
+                <BinTruck.bin>
+                  <WasteContainer>
+					          <WasteContainer.containerID>154</WasteContainer.containerID>
+						        <WasteContainer.capacity>10</WasteContainer.capacity>
+					          </WasteContainer>
+                  <Bin.binType>Recycling</Bin.binType>
+                  <Bin.owner>Scotty Snow</Bin.owner>
+                </BinTruck.bin>
+              </BinTruck>
+            </Admin.binTrucks>
+            
+            <Admin.bins>
+              <WasteContainer>
+					      <WasteContainer.containerID>154</WasteContainer.containerID>
+						    <WasteContainer.capacity>10</WasteContainer.capacity>
+					    </WasteContainer>
+            </Admin.bins>
+          </Admin>
+      </Customer.admin>
+
+</Customer>
