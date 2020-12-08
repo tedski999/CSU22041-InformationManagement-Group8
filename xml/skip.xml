@@ -1,24 +1,31 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!DOCTYPE Skip_Info [ 
-<!ELEMENT Skip_Info (Skip)>
-<!ELEMENT Skip (Size, Weight, Active, User_Info)>
-<!ELEMENT Size (#PCDATA)>
-<!ELEMENT Weight (#PCDATA)>
-<!ELEMENT Active (#PCDATA)>
-<!ELEMENT User_Info (#PCDATA)><!-- Name, Contact_Number, Customer_ID  -->
-<!ATTLIST Skip skipID ID #REQUIRED>
+
+<!DOCTYPE Skip [ 
+
+<!ELEMENT WasteContainer (WasteContainer.containerID, WasteContainer.capacity)>
+	<!ELEMENT WasteContainer.containerID (#PCDATA)>
+	<!ELEMENT WasteContainer.capacity (#PCDATA)>
+	
+<!ELEMENT UserInfo (UserInfo.name, UserInfo.contactNumber)>
+	<!ELEMENT UserInfo.name (#PCDATA)>
+	<!ELEMENT UserInfo.contactNumber (#PCDATA)>
+	
+<!ELEMENT Skip (WasteContainer, Skip.size, Skip.weight, Skip.active, Skip.userinfo)>
+	<!ATTLIST Skip skipID CDATA #IMPLIED>
+	<!ELEMENT Skip.size (#PCDATA)>
+	<!ELEMENT Skip.weight (#PCDATA)>
+	<!ELEMENT Skip.active (#PCDATA)>
+	<!ELEMENT Skip.userinfo (UserInfo)>
 ]>
 
-<Skip_Info>
-  <Skip skipID="ID001">
-    <Size>3x2x3m</Size>
-    <Weight>150kg</Weight>
-    <Active>True</Active>
-    <!-- <User_Info>
-      <Name>Example User</Name>
-      <Contact_Number>+353 1 896 1765</Contact_Number>
-      <Customer_ID>1</Customer_ID>
-    </User_Info> -->
-    <User_Info>User info here</User_Info>
-  </Skip>
-</Skip_Info>
+<Skip skipID="ID001">
+	<Skip.size>3x2x3m</Skip.size>
+    <Skip.weight>150kg</Skip.weight>
+    <Skip.active>True</Skip.active>
+	<Skip.userinfo>
+		<UserInfo>
+			<UserInfo.name>Example User</UserInfo.name>
+			<UserInfo.contactNumber>+353 1 896 1765</UserInfo.contactNumber>
+		</UserInfo>
+	</Skip.userinfo>
+</Skip>
