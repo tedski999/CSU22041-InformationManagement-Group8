@@ -1,31 +1,69 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" ?>
 
-<!DOCTYPE Skip [ 
+<!-- <!DOCTYPE Skip [
+  <!ATTLIST Skip skipID CDATA #IMPLIED>
 
-<!ELEMENT WasteContainer (WasteContainer.containerID, WasteContainer.capacity)>
-	<!ELEMENT WasteContainer.containerID (#PCDATA)>
-	<!ELEMENT WasteContainer.capacity (#PCDATA)>
+	<!ELEMENT Waste (Waste.weight)>
+		<!ELEMENT Waste.weight (#PCDATA)>
+
+	<!ELEMENT WasteContainer (WasteContainer.waste, WasteContainer.capacity)>
+		<!ATTLIST WasteContainer containerID CDATA #IMPLIED>
+		<!ELEMENT WasteContainer.waste (Waste*)>
+		<!ELEMENT WasteContainer.capacity (#PCDATA)>
+		
+	<!ELEMENT Customer (Customer.customerName, Customer.customerAddress, Customer.phoneNumber)>
+		<!ELEMENT Customer.customerName (#PCDATA)>
+		<!ELEMENT Customer.customerAddress (#PCDATA)>
+		<!ELEMENT Customer.phoneNumber (#PCDATA)>
 	
-<!ELEMENT UserInfo (UserInfo.name, UserInfo.contactNumber)>
-	<!ELEMENT UserInfo.name (#PCDATA)>
-	<!ELEMENT UserInfo.contactNumber (#PCDATA)>
+	<!ELEMENT Skip (WasteContainer, Skip.size, Skip.owner)>
+		<!ELEMENT Skip.size (#PCDATA)>
+		<!ELEMENT Skip.owner (Customer)>
+
+]> -->
+
+<!DOCTYPE Skips [
+  <!ELEMENT Skips (Skip)>
+
+  <!ATTLIST Skip skipID CDATA #IMPLIED>
+
+	<!ELEMENT Waste (Waste.weight)>
+		<!ELEMENT Waste.weight (#PCDATA)>
+
+	<!ELEMENT WasteContainer (WasteContainer.waste, WasteContainer.capacity)>
+		<!ATTLIST WasteContainer containerID CDATA #IMPLIED>
+		<!ELEMENT WasteContainer.waste (Waste*)>
+		<!ELEMENT WasteContainer.capacity (#PCDATA)>
+		
+	<!ELEMENT Customer (Customer.customerName, Customer.customerAddress, Customer.phoneNumber)>
+		<!ELEMENT Customer.customerName (#PCDATA)>
+		<!ELEMENT Customer.customerAddress (#PCDATA)>
+		<!ELEMENT Customer.phoneNumber (#PCDATA)>
 	
-<!ELEMENT Skip (WasteContainer, Skip.size, Skip.weight, Skip.active, Skip.userinfo)>
-	<!ATTLIST Skip skipID CDATA #IMPLIED>
-	<!ELEMENT Skip.size (#PCDATA)>
-	<!ELEMENT Skip.weight (#PCDATA)>
-	<!ELEMENT Skip.active (#PCDATA)>
-	<!ELEMENT Skip.userinfo (UserInfo)>
+	<!ELEMENT Skip (WasteContainer, Skip.size, Skip.owner)>
+		<!ELEMENT Skip.size (#PCDATA)>
+		<!ELEMENT Skip.owner (Customer)>
 ]>
 
-<Skip skipID="ID001">
-	<Skip.size>3x2x3m</Skip.size>
-    <Skip.weight>150kg</Skip.weight>
-    <Skip.active>True</Skip.active>
-	<Skip.userinfo>
-		<UserInfo>
-			<UserInfo.name>Example User</UserInfo.name>
-			<UserInfo.contactNumber>+353 1 896 1765</UserInfo.contactNumber>
-		</UserInfo>
-	</Skip.userinfo>
-</Skip>
+<Skips>
+  <Skip skipID="112233445" >
+    <WasteContainer containerID="125948">
+      <WasteContainer.waste>
+        <Waste>
+          <Waste.weight>150</Waste.weight>
+        </Waste>
+      </WasteContainer.waste>
+      <WasteContainer.capacity>200</WasteContainer.capacity>
+    </WasteContainer>
+  
+  
+    <Skip.size>M</Skip.size>
+    <Skip.owner>
+      <Customer>
+        <Customer.customerName> Adrian Murray </Customer.customerName>
+      <Customer.customerAddress> 5 The Fairways, Douglas, Cork, T12 PKN0 </Customer.customerAddress>
+      <Customer.phoneNumber> +353 021 438 2332 </Customer.phoneNumber>
+      </Customer>
+    </Skip.owner>
+  </Skip>
+</Skips>
